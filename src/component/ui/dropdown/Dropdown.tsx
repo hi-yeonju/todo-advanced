@@ -1,4 +1,4 @@
-interface Props {
+interface DropdownProps {
     name:string,
     onClick: () => void
 }
@@ -6,7 +6,7 @@ interface Props {
 const Dropdown = ({
     data
 }:{
-    data:Props[]
+    data:DropdownProps[]
 }) => {
     return (
         <div className=" absolute top-3 right-0 mt-2 w-20 bg-white border border-gray-200 rounded shadow-lg z-10 text-center">

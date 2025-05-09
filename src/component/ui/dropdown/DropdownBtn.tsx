@@ -2,10 +2,15 @@
 import { useEffect, useRef, useState } from "react";
 import Dropdown from "./Dropdown";
 
+interface DropdownProps {
+    name:string,
+    onClick: () => void
+}
+
 const DropdownBtn = ({
     data
 }:{
-    data:Dropdown[]
+    data:DropdownProps[]
 }) => {
 
     const dropdownRef = useRef<HTMLDivElement>(null); // 드롭다운 요소 감지용 ref
