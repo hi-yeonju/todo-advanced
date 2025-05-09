@@ -45,14 +45,14 @@ React Query를 활용해 API와의 상태 동기화를 처리하고 있으며,
 - `feat: Add Todo item creation functionality`
 - `fix: Resolve issue with empty input field in Todo form`
 
-
+<!--
 ## 🚀 데모
 
 (작성한 후 GitHub Pages 혹은 Vercel 배포 링크 추가)
 
 예시: [https://your-vercel-link.vercel.app](https://your-vercel-link.vercel.app)
 
-<br/>
+-->
 
 ## ⚙️ 사용 기술
 
