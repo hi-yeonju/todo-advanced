@@ -1,6 +1,6 @@
 "use client"
 import { TodoType } from '@/type/todo';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTodo } from '@/hooks/todo';
 import DropdownBtn from '@/component/ui/dropdown/DropdownBtn';
 import TodoCheckbox from './TodoCheckbox';

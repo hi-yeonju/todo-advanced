@@ -25,7 +25,7 @@ const TodoEdit = ({
             return
         }
         updateTodo.mutate({ ...todo, name: editValue }, {
-            onSuccess: res => {
+            onSuccess: () => {
                 defaultOnSuccess()
                 toggle()
             }

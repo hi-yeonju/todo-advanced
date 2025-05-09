@@ -19,9 +19,7 @@ export const useTodo = () => {
     // 등록
     const createTodo = useMutation({
         mutationFn: todo_action_add,
-        onSuccess: res => {
-            defaultOnSuccess()
-        }
+        onSuccess: () => defaultOnSuccess()
     });
 
 

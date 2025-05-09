@@ -26,7 +26,7 @@ const TodoWrite = () => {
         }
 
         createTodo.mutate(title, {
-            onSuccess: res => {
+            onSuccess: () => {
                 defaultOnSuccess()
                 setTitle('')
             }
