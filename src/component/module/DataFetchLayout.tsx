@@ -7,7 +7,7 @@ interface DataFetchLayoutProps<T> {
     checkData?: T;
     skeleton?: React.ReactNode;
     placeholder?: string;
-    renderError?: (error: any) => React.ReactNode;
+    renderError?: (error: unknown) => React.ReactNode;
     renderLoading?: () => React.ReactNode;
     renderEmpty?: () => React.ReactNode;
     children: (props: { data: T }) => React.ReactNode;
