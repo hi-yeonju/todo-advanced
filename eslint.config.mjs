@@ -11,6 +11,14 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    files: [
+      "src/app/**", 
+      "src/mocks/**"
+    ], // 원하는 경로로 조정
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
 ];
-
 export default eslintConfig;
