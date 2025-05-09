@@ -1,9 +1,9 @@
-import Todo_list from "@/component/module/Todo_list";
+import TodoList from "@/component/module/todo/TodoList";
 
 const HomeScreen = () => {
   return (
     <div>
-        <Todo_list />
+        <TodoList />
     </div>
   );
 }
