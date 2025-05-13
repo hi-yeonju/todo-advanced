@@ -5,9 +5,30 @@ import { useTodo } from '@/hooks/todo';
 import DropdownBtn from '@/component/ui/dropdown/DropdownBtn';
 import TodoCheckbox from './TodoCheckbox';
 import TodoEdit from './TodoEdit';
-
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from "@dnd-kit/utilities"
 
 const TodoItems = (todo:TodoType) => {
+
+
+    /*
+     * 드래그 설정
+    */
+     const {
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition,
+        isDragging,
+    } = useSortable({ id: todo.id })
+
+    const style = {
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.5 : 1,
+    }
+
      // 투두 액션 커스텀훅
     const {
         deleteTodo, // 삭제
@@ -43,7 +64,11 @@ const TodoItems = (todo:TodoType) => {
     }
     
     return (
-        <div className='relative'>
+        <div 
+        className='relative'
+        ref={setNodeRef}
+        style={style}
+        >
             <div className={`border border-gray-200 py-3 px-4 rounded-lg flex items-center leading-1  ${checked ? 'bg-blue-50' : ''}`}>
                 <div className="flex-1">
                     <h5 className={`font-medium ${checked ? ' text-blue-300 line-through' : ''}`}>{todo.name}</h5>
@@ -65,7 +90,15 @@ const TodoItems = (todo:TodoType) => {
                         },
                     ]}
                     />
-
+                    
+                    <button
+                    type="button"
+                    className="p-2 hover:bg-gray-100 rounded-md cursor-grab active:cursor-grabbing"
+                    {...attributes}
+                    {...listeners}
+                    >
+                    ⋮⋮
+                    </button>
                 </div>
     
             </div>

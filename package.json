@@ -10,6 +10,8 @@
     "test": "test"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
     "@tanstack/react-query": "^5.75.5",
     "next": "15.3.2",
     "react": "^19.0.0",
