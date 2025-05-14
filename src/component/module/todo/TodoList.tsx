@@ -28,6 +28,7 @@ const TodoList = () => {
         todosQuery, // 등록
     } = useTodo()
 
+    // console.log(todosQuery)
 
 
     /*
@@ -46,18 +47,8 @@ const TodoList = () => {
     )
 
 
-    const handleDragEnd = (event: DragEndEvent) => {
-        const { active, over } = event
 
-        console.log(event)
-
-        // if (over && active.id !== over.id) {
-        // const oldIndex = todos.findIndex((todo) => todo.id === active.id)
-        // const newIndex = todos.findIndex((todo) => todo.id === over.id)
-        
-        // onReorder(arrayMove(todos, oldIndex, newIndex))
-        // }
-    }
+    const onReorder = () => {}
 
     return (
         <div className='p-5 bg-gray-100 min-h-screen'>
@@ -74,7 +65,18 @@ const TodoList = () => {
                     <DndContext
                     sensors={sensors}
                     collisionDetection={closestCenter}
-                    onDragEnd={handleDragEnd}
+                    onDragEnd={(event: DragEndEvent) => {
+                        const { active, over } = event
+
+                        if (over && active.id !== over.id) {
+                            const oldIndex = data.findIndex((todo) => todo.id === active.id)
+                            const newIndex = data.findIndex((todo) => todo.id === over.id)
+
+                            console.log(oldIndex, newIndex)
+                            
+                            onReorder(arrayMove(data, oldIndex, newIndex))
+                        }
+                    }}
                     >
                         <SortableContext
                             items={data.map(todo => todo.id)}

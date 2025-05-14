@@ -8,13 +8,13 @@ import TodoEdit from './TodoEdit';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from "@dnd-kit/utilities"
 
-const TodoItems = (todo:TodoType) => {
+const TodoItems = (todo: TodoType) => {
 
 
     /*
      * 드래그 설정
     */
-     const {
+    const {
         attributes,
         listeners,
         setNodeRef,
@@ -29,7 +29,7 @@ const TodoItems = (todo:TodoType) => {
         opacity: isDragging ? 0.5 : 1,
     }
 
-     // 투두 액션 커스텀훅
+    // 투두 액션 커스텀훅
     const {
         deleteTodo, // 삭제
     } = useTodo()
@@ -40,13 +40,13 @@ const TodoItems = (todo:TodoType) => {
 
     useEffect(() => {
         setChecked(todo.checked)
-    },[todo.checked])
+    }, [todo.checked])
 
 
 
     // 드롭다운 - 삭제
     const handleDelete = () => {
-        if(!confirm('할 일을 삭제하시겠습니까?')) return
+        if (!confirm('할 일을 삭제하시겠습니까?')) return
 
         deleteTodo.mutate(todo.id)
     }
@@ -59,50 +59,50 @@ const TodoItems = (todo:TodoType) => {
     // 수정
     const [isEdit, setIsEdit] = useState(false)
 
-    if(isEdit){
+    if (isEdit) {
         return <TodoEdit todo={todo} toggle={() => setIsEdit(false)} />
     }
-    
+
     return (
-        <div 
-        className='relative'
-        ref={setNodeRef}
-        style={style}
+        <div
+            className='relative'
+            ref={setNodeRef}
+            style={style}
         >
             <div className={`border border-gray-200 py-3 px-4 rounded-lg flex items-center leading-1  ${checked ? 'bg-blue-50' : ''}`}>
                 <div className="flex-1">
                     <h5 className={`font-medium ${checked ? ' text-blue-300 line-through' : ''}`}>{todo.name}</h5>
                 </div>
-               
+
                 <div className='inline-flex items-center gap-1'>
-                    <TodoCheckbox 
+                    <TodoCheckbox
                         item={todo}
                     />
                     <DropdownBtn
-                    data={[
-                        {
-                            name: '편집',
-                            onClick: onEdit
-                        },
-                        {
-                            name: '삭제',
-                            onClick: handleDelete
-                        },
-                    ]}
+                        data={[
+                            {
+                                name: '편집',
+                                onClick: onEdit
+                            },
+                            {
+                                name: '삭제',
+                                onClick: handleDelete
+                            },
+                        ]}
                     />
-                    
+
                     <button
-                    type="button"
-                    className="p-2 hover:bg-gray-100 rounded-md cursor-grab active:cursor-grabbing"
-                    {...attributes}
-                    {...listeners}
+                        type="button"
+                        className="p-2 hover:bg-gray-100 rounded-md cursor-grab active:cursor-grabbing"
+                        {...attributes}
+                        {...listeners}
                     >
-                    ⋮⋮
+                        ⋮⋮
                     </button>
                 </div>
-    
+
             </div>
-         
+
 
 
         </div>
